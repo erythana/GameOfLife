@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Timers;
+using GameOfLife.Models;
 
 namespace GameOfLife.Ruleset;
 
@@ -12,6 +14,8 @@ public class GameEngine : ModelBase
     private bool _isGameRunning;
     private bool _isGamePaused;
 
+    private List<Cell> _activeCells;
+
     #endregion
 
     #region constructor
@@ -22,6 +26,7 @@ public class GameEngine : ModelBase
         _tickTimer.Elapsed += TickTimerOnElapsed;
         _tickTimer.AutoReset = true;
 
+        _activeCells = new List<Cell>();
         IsGameRunning = false;
         
         TickRate = Defaults.TickRate;
@@ -29,6 +34,10 @@ public class GameEngine : ModelBase
 
     private void TickTimerOnElapsed(object? sender, ElapsedEventArgs e)
     {
+        if (_activeCells.Count == 0)
+            StopGame();
+        
+        
         // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
         // Any live cell with two or three live neighbours lives on to the next generation.
         // Any live cell with more than three live neighbours dies, as if by overpopulation.
