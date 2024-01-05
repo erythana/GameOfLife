@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="GameOfLife/MainWindow.axaml" value="GameOfLife/GameOfLife.csproj" />
+        <entry key="GameOfLife/Views/GameControl.axaml" value="GameOfLife/GameOfLife.csproj" />
+        <entry key="GameOfLife/Views/SettingsControl.axaml" value="GameOfLife/GameOfLife.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
