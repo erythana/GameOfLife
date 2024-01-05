@@ -2,13 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:GameOfLife.Views"
+        xmlns:views="clr-namespace:GameOfLife.Avalonia.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="GameOfLife.MainWindow"
-        Title="GameOfLife.Avalonia">
-<Grid ColumnDefinitions="*, 4, *">
+        x:Class="GameOfLife.Avalonia.MainWindow"
+        Title="Game of Life">
+<Grid ColumnDefinitions="Auto, 4, *">
         <views:SettingsControl 
-                Grid.Column="0" />
+                Grid.Column="0" 
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"/>
         <GridSplitter 
                 Background="White"
                 Grid.Column="1" 

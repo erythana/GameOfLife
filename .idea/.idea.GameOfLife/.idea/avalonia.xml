@@ -3,6 +3,11 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="GameOfLife.Avalonia/App.axaml" value="GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" />
+        <entry key="GameOfLife.Avalonia/MainWindow.axaml" value="GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" />
+        <entry key="GameOfLife.Avalonia/Views/GameControl.axaml" value="GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" />
+        <entry key="GameOfLife.Avalonia/Views/SettingsControl.axaml" value="GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" />
+        <entry key="GameOfLife/App.axaml" value="GameOfLife/GameOfLife.csproj" />
         <entry key="GameOfLife/MainWindow.axaml" value="GameOfLife/GameOfLife.csproj" />
         <entry key="GameOfLife/Views/GameControl.axaml" value="GameOfLife/GameOfLife.csproj" />
         <entry key="GameOfLife/Views/SettingsControl.axaml" value="GameOfLife/GameOfLife.csproj" />

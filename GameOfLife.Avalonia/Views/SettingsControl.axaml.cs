@@ -1,8 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
-namespace GameOfLife.Views;
+namespace GameOfLife.Avalonia.Views;
 
 public partial class SettingsControl : UserControl
 {

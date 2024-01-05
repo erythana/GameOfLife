@@ -3,6 +3,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="250"
-             x:Class="GameOfLife.Views.SettingsControl">
-
+             x:Class="GameOfLife.Avalonia.Views.SettingsControl">
+    <StackPanel>
+        <TextBlock Text="Tick-Rate (ms)"></TextBlock>
+        <TextBlock Text="Game-Size"></TextBlock>
+        <Button Content="Start Game" Command="{Binding StartGameCommand}" />
+        <Button Content="Pause Game" Command="{Binding PauseGameCommand}" />
+        <Button Content="Stop Game" Command="{Binding StopGameCommand}" />
+        <Button Content="Load Seeds?"></Button>
+    </StackPanel>
 </UserControl>
