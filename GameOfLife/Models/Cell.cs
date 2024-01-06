@@ -1,9 +1,8 @@
+using System.Drawing;
+
 namespace GameOfLife.Models;
 
-public class Cell
+public record struct Cell
 {
-    private double _horizontalPosition;
-    private double _verticalPosition;
-    
-    public bool IsAlive { get; set; }
+    public required Point Position { get; set; }
 }

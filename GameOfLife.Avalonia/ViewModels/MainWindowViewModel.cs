@@ -1,4 +1,9 @@
+using System.Collections.ObjectModel;
+using System.Drawing;
+using System.Linq;
 using System.Reactive.Linq;
+using DynamicData;
+using GameOfLife.Models;
 using GameOfLife.Ruleset;
 using ReactiveUI;
 
@@ -9,6 +14,7 @@ public class MainWindowViewModel : ViewModelBase
     #region member fields
 
     private readonly GameEngine _gameEngine;
+    private long _currentGeneration;
 
     #endregion
 
@@ -17,9 +23,35 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         _gameEngine = new GameEngine();
+        
+        //temporary
+        CellSize = 20;
+        _gameEngine.PlaceCells(new []
+        {
+            new Point(-1,0),
+            new Point(0,0),
+            new Point(1,0)
+        });
+        
+        Cells = new ObservableCollection<CellViewModel>();
         InitializeCommands();
+
+        _gameEngine.TickFinished += GameEngineOnTickFinished;
     }
-    
+
+    private void GameEngineOnTickFinished(object? sender, TickFinishedEventArgs e)
+    {
+        var cells = e.ActiveCells.Select(c => new CellViewModel
+        {
+            Top = c.Y * CellSize,
+            Left = c.X * CellSize,
+            CellSize = CellSize
+        });
+        Cells.Clear();
+        Cells.AddRange(cells);
+        CurrentGeneration = e.Generation;
+    }
+
     #endregion
 
     #region properties
@@ -27,6 +59,15 @@ public class MainWindowViewModel : ViewModelBase
     public IReactiveCommand StartGameCommand { get; private set; }
     public IReactiveCommand PauseGameCommand { get; private set; }
     public IReactiveCommand StopGameCommand { get; private set; }
+
+    public double CellSize { get; private set; }
+
+    public ObservableCollection<CellViewModel> Cells { get; private set; }
+
+    public long CurrentGeneration {
+        get => _currentGeneration;
+        private set => SetField(ref _currentGeneration, value);
+    }
 
     #endregion
 

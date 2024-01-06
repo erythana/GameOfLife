@@ -7,10 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="Initial commit">
+    <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="Implemented first design of game logic with visual update">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife/Models/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Models/Cell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,9 +22,12 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12728b48859e5c339bb7819b9a9aedc55b0201e8e99c0f32215f4cca043287/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27be5d106a789638721745a2a46f9cb0f7a39905117d644638b6e0d56261be/ReplaySubject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2d5477ee2c9a13212ad5b8aacd2641a35f4e9f1f061be20e3293244fb7266a4/Point.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/896f8bb260c18e493e44b41c9fcd93b55de41ae2dd1b93a2a7a78b4d9ddf9cb/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a86e1612711dc640abd3acd49217d406d4e1fec4c82edc89f3a4d38d68cd0/RxApp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b48178b0dbc4487010e647267312f441ef63a824d42089848113ae893e72fc90/ObservableCollection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdb498c0d14105b7dd52bec27cd1982ff3539e0c7f8b6d01495ec996fbb639/IScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e0d1f0826da6cf0e8797ab0521864eb3b429f9a375f4a3ae20380b9777555/DefaultScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ed3d9c2991102849a0aaef21daddea3495f5466b498f367f3fa6a4d3b46aa8/FluentTheme.cs" root0="SKIP_HIGHLIGHTING" />
@@ -39,6 +41,9 @@
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Models/Cell.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Ruleset/GameEngine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Ruleset/GameEngine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/ModelBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -105,7 +110,10 @@
       <workItem from="1704471151236" duration="1277000" />
       <workItem from="1704472445303" duration="1928000" />
       <workItem from="1704486445282" duration="3633000" />
-      <workItem from="1704490094260" duration="5314000" />
+      <workItem from="1704490094260" duration="5690000" />
+      <workItem from="1704533487034" duration="3397000" />
+      <workItem from="1704536893051" duration="2003000" />
+      <workItem from="1704538911428" duration="7529000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -115,7 +123,31 @@
       <option name="project" value="LOCAL" />
       <updated>1704492799339</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Marshal changes for the commands canExecutes observable back to UI Thread">
+      <option name="closed" value="true" />
+      <created>1704495718433</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704495718433</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implemented first design of game logic with visual update">
+      <option name="closed" value="true" />
+      <created>1704545615938</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704545615938</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented first design of game logic with visual update">
+      <option name="closed" value="true" />
+      <created>1704545833383</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704545833383</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,25 +168,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/GameOfLife/Ruleset/ModelBase.cs</url>
-          <line>20</line>
-          <properties documentPath="$PROJECT_DIR$/GameOfLife/Ruleset/ModelBase.cs" initialLine="20" containingFunctionPresentation="Method 'SetField'">
-            <startOffsets>
-              <option value="663" />
-            </startOffsets>
-            <endOffsets>
-              <option value="695" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Marshal changes for the commands canExecutes observable back to UI Thread" />
+    <MESSAGE value="Implemented first design of game logic with visual update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented first design of game logic with visual update" />
   </component>
 </project>
