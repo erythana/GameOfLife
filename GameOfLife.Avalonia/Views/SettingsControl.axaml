@@ -2,14 +2,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GameOfLife.Avalonia.ViewModels"
              mc:Ignorable="d" d:DesignWidth="250"
+             Width="250"
              x:Class="GameOfLife.Avalonia.Views.SettingsControl">
-    <StackPanel>
-        <TextBlock Text="Tick-Rate (ms)"></TextBlock>
-        <TextBlock Text="Game-Size"></TextBlock>
-        <Button Content="Start Game" Command="{Binding StartGameCommand}" />
-        <Button Content="Pause Game" Command="{Binding PauseGameCommand}" />
-        <Button Content="Stop Game" Command="{Binding StopGameCommand}" />
-        <Button Content="Load Seeds?"></Button>
-    </StackPanel>
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    <UserControl.Styles>
+        <Style Selector="Button.button">
+            <Setter Property="Width" Value="120" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
+
+    <DockPanel 
+        LastChildFill="True"
+        Margin="10,30,10,30">
+        <StackPanel DockPanel.Dock="Bottom">
+            <TextBlock Text="{Binding UpdateRate, StringFormat={}Update rate ({0} milliseconds)}" />
+            <Slider
+                Value="{Binding UpdateRate}"
+                Minimum="100"
+                Maximum="2000"
+                TickFrequency="100"
+                TickPlacement="BottomRight"
+                IsSnapToTickEnabled="False" />
+            <TextBlock Text="{Binding CellSize, StringFormat={}Cell size: {0}}" />
+            <Slider
+                Value="{Binding CellSize}"
+                Minimum="10"
+                Maximum="100"
+                TickFrequency="10"
+                TickPlacement="BottomRight"
+                IsSnapToTickEnabled="True" />
+            <Button
+                Content="Start Game"
+                Command="{Binding StartGameCommand}"
+                Classes="button" />
+            <Button
+                Content="Pause Game"
+                Command="{Binding PauseGameCommand}"
+                Classes="button" />
+            <Button
+                Content="Stop Game"
+                Command="{Binding StopGameCommand}"
+                Classes="button" />
+        </StackPanel>
+        <TreeView
+            HorizontalAlignment="Stretch"
+            ItemsSource="{Binding PatternPresets}"
+            SelectionMode="Single"
+            SelectedItem="{Binding SelectedPattern}"
+            SelectionChanged="TreeView_OnSelectionChanged">
+            <TreeView.ItemTemplate>
+                <TreeDataTemplate
+                    ItemsSource="{Binding SubNodes}">
+                    <TextBlock
+                        Text="{Binding Title}" />
+                </TreeDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </DockPanel>
+
 </UserControl>

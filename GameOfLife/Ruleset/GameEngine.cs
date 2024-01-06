@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Timers;
 using GameOfLife.Models;
@@ -32,21 +33,21 @@ public class GameEngine : ModelBase
         _activeCellsBuffer1 = new HashSet<Point>();
         _activeCellsBuffer2 = new HashSet<Point>();
         IsGameRunning = false;
-        
+
         TickRate = Defaults.TickRate;
     }
-    
+
     #endregion
 
     #region methods
-    
+
     public void StartGame()
     {
         IsGameRunning = true;
         IsGamePaused = false;
         _tickTimer.Enabled = true;
     }
-    
+
     public void PauseGame()
     {
         _tickTimer.Enabled = false;
@@ -88,7 +89,7 @@ public class GameEngine : ModelBase
         get => _isGameRunning;
         private set => SetField(ref _isGameRunning, value);
     }
-    
+
     public bool IsGamePaused {
         get => _isGamePaused;
         private set => SetField(ref _isGamePaused, value);
@@ -103,24 +104,27 @@ public class GameEngine : ModelBase
 
     #region events
 
-    public event EventHandler<TickFinishedEventArgs>? TickFinished; 
-    
+    public event EventHandler<TickFinishedEventArgs>? TickFinished;
+
     private void TickTimerOnElapsed(object? sender, ElapsedEventArgs e) => PopulateGeneration();
 
     #endregion
 
 
     #region helper methods
-    
+
     private void PopulateGeneration()
     {
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+        
         var currentGeneration = GetCellBuffer(Generation);
         var nextGeneration = GetCellBuffer(Generation + 1);
         if (currentGeneration.Count == 0)
             StopGame();
-        
+
         nextGeneration.Clear();
-        
+
         foreach (var activeCell in currentGeneration)
         {
             var adjacentCellPositions = GetAdjacentPoints(activeCell);
@@ -141,7 +145,7 @@ public class GameEngine : ModelBase
             // Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
             if (liveNeighbors is >= 2 and <= 3)
                 nextGeneration.Add(activeCell);
-            
+
             foreach (var point in deadNeighbors)
             {
                 liveNeighbors = 0;
@@ -159,6 +163,8 @@ public class GameEngine : ModelBase
 
         TickFinished?.Invoke(this, new TickFinishedEventArgs(Generation, currentGeneration));
         ++Generation;
+        stopwatch.Stop();
+        Debug.WriteLine(stopwatch.Elapsed);
     }
 
     private IEnumerable<Point> GetAdjacentPoints(Point currentPosition)
@@ -171,17 +177,17 @@ public class GameEngine : ModelBase
             for (var j = x - 1; j <= x + 1; j++)
             {
                 var point = new Point(j, i);
-                if(point == currentPosition)
+                if (point == currentPosition)
                     continue;
                 yield return new Point(j, i);
             }
         }
     }
-    
+
     private HashSet<Point> GetCellBuffer(long generation) => generation % 2 == 0
         ? _activeCellsBuffer1
         : _activeCellsBuffer2;
 
     #endregion
-    
+
 }

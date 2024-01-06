@@ -7,9 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="Implemented first design of game logic with visual update">
+    <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife/Extensions/PointEnumerableExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife/SamplePatterns.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife/Defaults.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Defaults.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,28 +31,44 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/11af8f98c443d1a15dafaafbe21ee24e91ec83bccda0db8db8d85f9782f92ead/Interactive.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12728b48859e5c339bb7819b9a9aedc55b0201e8e99c0f32215f4cca043287/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27be5d106a789638721745a2a46f9cb0f7a39905117d644638b6e0d56261be/ReplaySubject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2d5477ee2c9a13212ad5b8aacd2641a35f4e9f1f061be20e3293244fb7266a4/Point.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b845e1ab72687a184ca3650a037fab73bcbce5035e31e3ff860df2494a2/ReactiveCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4ea6e1e014844945f95328fe189dc13548cd6511aa2d628c312a4b0bda1d1/Rect.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5a32e3a596b01ca8834bdc24c6744dd7ac8762bc902fa1ebe4e6f3225ce4183/TileBrush.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/896f8bb260c18e493e44b41c9fcd93b55de41ae2dd1b93a2a7a78b4d9ddf9cb/Timer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/91385f46579de0b4502a829430ec3ce8f1ac79434f1fab7c5d1933b84c77414/RectangleGeometry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a86e1612711dc640abd3acd49217d406d4e1fec4c82edc89f3a4d38d68cd0/RxApp.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b48178b0dbc4487010e647267312f441ef63a824d42089848113ae893e72fc90/ObservableCollection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdb498c0d14105b7dd52bec27cd1982ff3539e0c7f8b6d01495ec996fbb639/IScheduler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c4995a828fb940486cea5bfffa748189757b89a03d7e798241a3a7c0fb3187eb/ReactiveCommandBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9b15aac5ffe88c531ff9a13946b0ff5628fc0dc4d6dced737c463ae8a82ba/RelativeRect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e0d1f0826da6cf0e8797ab0521864eb3b429f9a375f4a3ae20380b9777555/DefaultScheduler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e747192abb38e2df82cbdb37e721567726f559914a7b81f8b26ba537de632f4/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ed3d9c2991102849a0aaef21daddea3495f5466b498f367f3fa6a4d3b46aa8/FluentTheme.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/GameControl.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Models/Cell.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Ruleset/GameEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Ruleset/GameEngine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Defaults.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/ModelBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -57,28 +82,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.GameOfLife.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.GameOfLife.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/home/chris/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
-      &quot;/home/chris/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
-      &quot;/home/chris/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/home/chris/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
+      "/home/chris/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache",
+      "/home/chris/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GameOfLife" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -113,7 +138,9 @@
       <workItem from="1704490094260" duration="5690000" />
       <workItem from="1704533487034" duration="3397000" />
       <workItem from="1704536893051" duration="2003000" />
-      <workItem from="1704538911428" duration="7529000" />
+      <workItem from="1704538911428" duration="7661000" />
+      <workItem from="1704555585745" duration="9700000" />
+      <workItem from="1704565298927" duration="8410000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -147,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704545833383</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implemented first design of game logic with visual update">
+      <option name="closed" value="true" />
+      <created>1704546573710</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704546573710</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,5 +206,28 @@
     <MESSAGE value="Marshal changes for the commands canExecutes observable back to UI Thread" />
     <MESSAGE value="Implemented first design of game logic with visual update" />
     <option name="LAST_COMMIT_MESSAGE" value="Implemented first design of game logic with visual update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs</url>
+          <line>95</line>
+          <properties documentPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" initialLine="95" containingFunctionPresentation="Property 'SelectedPattern'">
+            <startOffsets>
+              <option value="2717" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2762" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

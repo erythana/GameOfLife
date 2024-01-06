@@ -6,16 +6,12 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="GameOfLife.Avalonia.MainWindow"
         Title="Game of Life">
-<Grid ColumnDefinitions="Auto, 4, *">
+<Grid ColumnDefinitions="Auto, *">
         <views:SettingsControl 
                 Grid.Column="0" 
-                VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center"/>
-        <GridSplitter 
-                Background="White"
-                Grid.Column="1" 
-                ResizeDirection="Columns" />
+                VerticalContentAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"/>
         <views:GameControl 
-                Grid.Column="2" />
+                Grid.Column="1" />
 </Grid>
 </Window>

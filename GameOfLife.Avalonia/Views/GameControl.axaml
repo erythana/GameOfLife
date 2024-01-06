@@ -9,13 +9,35 @@
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
     <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+        <StackPanel 
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
             <TextBlock
-                FontSize="20"
-                Text="{Binding CurrentGeneration, StringFormat={}Current Generation: {0}}" />
+                Text="{Binding CurrentGeneration, StringFormat={}Current Generation: {0}}"
+                FontSize="20" />
         </StackPanel>
-
-        <ItemsControl ItemsSource="{Binding Cells}" Background="Bisque">
+        
+        <ItemsControl ItemsSource="{Binding Cells}">
+            <ItemsControl.Background>
+                <DrawingBrush 
+                    TileMode="Tile" 
+                    DestinationRect="{Binding BackgroundGridSize, Mode=OneWay}">
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing Brush="Bisque">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="{Binding BackgroundRectangleSize, Mode=OneWay}"/>
+                            </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Pen>
+                                <Pen 
+                                    Brush="Moccasin"
+                                    Thickness="1" 
+                                    LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </ItemsControl.Background>
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas
@@ -33,11 +55,13 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Rectangle
-                        Width="{Binding CellSize}"
-                        Height="{Binding CellSize}"
+                        Width="{Binding CellSize, Mode=OneTime}"
+                        Height="{Binding CellSize, Mode=OneTime}"
                         Fill="Red">
                         <Rectangle.RenderTransform>
-                            <TranslateTransform X="{Binding Left}" Y="{Binding Top}" />
+                            <TranslateTransform
+                                X="{Binding Left, Mode=OneTime}" 
+                                Y="{Binding Top, Mode=OneTime}" />
                         </Rectangle.RenderTransform>
                     </Rectangle>
                 </DataTemplate>
