@@ -27,16 +27,14 @@
                 Minimum="100"
                 Maximum="2000"
                 TickFrequency="100"
-                TickPlacement="BottomRight"
-                IsSnapToTickEnabled="False" />
+                TickPlacement="BottomRight" />
             <TextBlock Text="{Binding CellSize, StringFormat={}Cell size: {0}}" />
             <Slider
                 Value="{Binding CellSize}"
-                Minimum="10"
+                Minimum="1"
                 Maximum="100"
                 TickFrequency="10"
-                TickPlacement="BottomRight"
-                IsSnapToTickEnabled="True" />
+                TickPlacement="BottomRight" />
             <Button
                 Content="Start Game"
                 Command="{Binding StartGameCommand}"

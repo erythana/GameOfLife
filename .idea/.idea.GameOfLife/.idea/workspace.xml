@@ -8,18 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife/Extensions/PointEnumerableExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife/SamplePatterns.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/GameOfLife.Avalonia.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife/Defaults.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Defaults.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife/SamplePatterns.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/SamplePatterns.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +59,7 @@
     <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife/Defaults.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,28 +75,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.GameOfLife.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "inlay.hints",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.GameOfLife.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/home/chris/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/home/chris/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/home/chris/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/home/chris/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/chris/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/chris/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="GameOfLife" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -140,7 +133,9 @@
       <workItem from="1704536893051" duration="2003000" />
       <workItem from="1704538911428" duration="7661000" />
       <workItem from="1704555585745" duration="9700000" />
-      <workItem from="1704565298927" duration="8410000" />
+      <workItem from="1704565298927" duration="8751000" />
+      <workItem from="1704584834921" duration="61000" />
+      <workItem from="1704660415690" duration="349000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -182,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704546573710</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented sample patterns and prepared sample selection">
+      <option name="closed" value="true" />
+      <created>1704574026361</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704574026361</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,26 +208,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Marshal changes for the commands canExecutes observable back to UI Thread" />
     <MESSAGE value="Implemented first design of game logic with visual update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented first design of game logic with visual update" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs</url>
-          <line>95</line>
-          <properties documentPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" initialLine="95" containingFunctionPresentation="Property 'SelectedPattern'">
-            <startOffsets>
-              <option value="2717" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2762" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Implemented sample patterns and prepared sample selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented sample patterns and prepared sample selection" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

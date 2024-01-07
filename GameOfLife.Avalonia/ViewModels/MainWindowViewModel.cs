@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia;
+using DynamicData;
 using GameOfLife.Avalonia.Models;
 using GameOfLife.Extensions;
 using GameOfLife.Models;
@@ -20,7 +21,7 @@ public class MainWindowViewModel : ViewModelBase
 
     private readonly GameEngine _gameEngine;
     private long _currentGeneration;
-    private double _cellSize;
+    private long _cellSize;
     private RelativeRect _backgroundGridSize;
     private Rect _backgroundRectangleSize;
     private int _updateRate;
@@ -38,7 +39,9 @@ public class MainWindowViewModel : ViewModelBase
         _gameEngine.TickFinished += GameEngineOnTickFinished;
         
         //temporary
-        _gameEngine.PlaceCells(SamplePatterns.Oscillators.Pentadecathlon.Offset(0, 0));
+        var cells = SamplePatterns.Methuselah.RPentomino.Offset(0, 0);
+        Cells = new(cells.Select(p => new CellViewModel(){CellSize = CellSize, Left = p.X * CellSize, Top = p.Y * CellSize}));
+        _gameEngine.PlaceCells(cells);
         
         InitializeCommands();
         InitializePatternPresets();
@@ -52,7 +55,7 @@ public class MainWindowViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit>  PauseGameCommand { get; private set; }
     public ReactiveCommand<Unit, Unit>  StopGameCommand { get; private set; }
 
-    public double CellSize {
+    public long CellSize {
         get => _cellSize;
         private set
         {
@@ -102,8 +105,12 @@ public class MainWindowViewModel : ViewModelBase
 
     private void StartGame() => _gameEngine.StartGame();
     private void PauseGame() => _gameEngine.PauseGame();
-    private void StopGame() => _gameEngine.StopGame();
-    
+    private void StopGame()
+    {
+        _gameEngine.StopGame();
+        Cells.Clear();
+    }
+
     private void GameEngineOnTickFinished(object? sender, TickFinishedEventArgs e)
     {
         var cells = e.ActiveCells.Select(c => new CellViewModel
