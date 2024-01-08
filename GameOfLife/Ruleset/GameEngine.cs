@@ -58,6 +58,7 @@ public class GameEngine : ModelBase
     {
         _activeCellsBuffer1.Clear();
         _activeCellsBuffer2.Clear();
+        Generation = 0;
         _tickTimer.Enabled = false;
         IsGameRunning = false;
     }
@@ -65,6 +66,7 @@ public class GameEngine : ModelBase
     public void PlaceCells(IEnumerable<Point> cellsToPlace)
     {
         var buffer = GetCellBuffer(Generation);
+        buffer.Clear();
         foreach (var cell in cellsToPlace)
             buffer.Add(cell);
     }

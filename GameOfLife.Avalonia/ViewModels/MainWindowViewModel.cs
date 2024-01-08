@@ -5,9 +5,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia;
-using DynamicData;
 using GameOfLife.Avalonia.Models;
-using GameOfLife.Extensions;
 using GameOfLife.Models;
 using GameOfLife.Ruleset;
 using ReactiveUI;
@@ -21,10 +19,12 @@ public class MainWindowViewModel : ViewModelBase
 
     private readonly GameEngine _gameEngine;
     private long _currentGeneration;
-    private long _cellSize;
-    private RelativeRect _backgroundGridSize;
-    private Rect _backgroundRectangleSize;
+    private int _cellSize;
     private int _updateRate;
+    private Rect _canvasSize;
+    private Rect _backgroundRectangleSize;
+    private RelativeRect _backgroundGridSize;
+    private IEnumerable<Point> _currentCells;
     private PatternNode _selectedPattern;
 
     #endregion
@@ -33,35 +33,32 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        Cells = new ObservableCollection<CellViewModel>();
-        CellSize = 20;
         _gameEngine = new GameEngine();
         _gameEngine.TickFinished += GameEngineOnTickFinished;
-        
-        //temporary
-        var cells = SamplePatterns.Methuselah.RPentomino.Offset(0, 0);
-        Cells = new(cells.Select(p => new CellViewModel(){CellSize = CellSize, Left = p.X * CellSize, Top = p.Y * CellSize}));
-        _gameEngine.PlaceCells(cells);
+        _currentCells = Enumerable.Empty<Point>();
+        Cells = new ObservableCollection<CellViewModel>();
+        CellSize = 20;
         
         InitializeCommands();
         InitializePatternPresets();
     }
-    
+
     #endregion
 
     #region properties
 
     public ReactiveCommand<Unit, Unit> StartGameCommand { get; private set; }
-    public ReactiveCommand<Unit, Unit>  PauseGameCommand { get; private set; }
-    public ReactiveCommand<Unit, Unit>  StopGameCommand { get; private set; }
+    public ReactiveCommand<Unit, Unit> PauseGameCommand { get; private set; }
+    public ReactiveCommand<Unit, Unit> StopGameCommand { get; private set; }
 
-    public long CellSize {
+    public int CellSize {
         get => _cellSize;
         private set
         {
             SetField(ref _cellSize, value);
             BackgroundGridSize = new RelativeRect(0, 0, CellSize, CellSize, RelativeUnit.Absolute);
             BackgroundRectangleSize = new Rect(0, 0, CellSize, CellSize);
+            PlaceCells(_currentCells);
         }
     }
 
@@ -99,29 +96,51 @@ public class MainWindowViewModel : ViewModelBase
         set => SetField(ref _selectedPattern, value);
     }
 
+    public Rect CanvasSize {
+        get => _canvasSize;
+        set
+        {
+            _canvasSize = value;
+            PlaceCells(_currentCells);
+        }
+    }
+
     #endregion
 
     #region methods
 
     private void StartGame() => _gameEngine.StartGame();
     private void PauseGame() => _gameEngine.PauseGame();
+
     private void StopGame()
     {
         _gameEngine.StopGame();
         Cells.Clear();
+        CurrentGeneration = 0;
+    }
+    
+    public void ToggleCellOnCanvas(Point pointerPosition)
+    {
+        if (_gameEngine.IsGameRunning && !_gameEngine.IsGamePaused)
+            return;
+
+        var horizontalCell = pointerPosition.X / CellSize + (pointerPosition.X >= 0
+            ? 1
+            : 0);
+        var verticalCell = pointerPosition.Y / CellSize + (pointerPosition.Y >= 0
+            ? 0
+            : -1);
+
+        var cellToPlace = new Point(horizontalCell, verticalCell);
+
+        PlaceCells(_currentCells.Contains(cellToPlace)
+            ? _currentCells.Where(x => !x.Equals(cellToPlace))
+            : _currentCells.Append(cellToPlace));
     }
 
     private void GameEngineOnTickFinished(object? sender, TickFinishedEventArgs e)
     {
-        var cells = e.ActiveCells.Select(c => new CellViewModel
-        {
-            Top = c.Y * CellSize,
-            Left = c.X * CellSize,
-            CellSize = CellSize
-        });
-        Cells = new ObservableCollection<CellViewModel>(cells);
-        OnPropertyChanged(nameof(Cells));
-        
+        PlaceCells(e.ActiveCells);
         CurrentGeneration = e.Generation;
     }
 
@@ -188,6 +207,25 @@ public class MainWindowViewModel : ViewModelBase
                         }),
                 })
         };
+    }
+    
+    private void PlaceCells(IEnumerable<Point> cells)
+    {
+        var cellsToPlace = cells.ToList();
+        _currentCells = cellsToPlace;
+        
+        var horizontalOffset = (CanvasSize.Width / 2) % CellSize;
+        var verticalOffset = (CanvasSize.Height / 2) % CellSize - CellSize;
+
+        Cells = new ObservableCollection<CellViewModel>(cellsToPlace.Select(p => new CellViewModel
+        {
+            CellSize = CellSize,
+            Left = p.X * CellSize - horizontalOffset,
+            Top = p.Y * CellSize + verticalOffset 
+        }));
+        OnPropertyChanged(nameof(Cells));
+        
+        _gameEngine.PlaceCells(cellsToPlace);
     }
 
     #endregion

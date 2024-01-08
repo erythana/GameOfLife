@@ -18,7 +18,9 @@
                 FontSize="20" />
         </StackPanel>
         
-        <ItemsControl ItemsSource="{Binding Cells}">
+        <ItemsControl ItemsSource="{Binding Cells}"
+                      Bounds="{Binding CanvasSize, Mode=OneWayToSource}"
+                      Tapped="InputElement_OnTapped">
             <ItemsControl.Background>
                 <DrawingBrush 
                     TileMode="Tile" 
