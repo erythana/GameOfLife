@@ -20,7 +20,9 @@
         
         <ItemsControl ItemsSource="{Binding Cells}"
                       Bounds="{Binding CanvasSize, Mode=OneWayToSource}"
-                      Tapped="InputElement_OnTapped">
+                      PointerMoved="InputElement_OnPointerMoved"
+                      Tapped="InputElement_OnTapped"
+                      PointerReleased="InputElement_OnPointerReleased">
             <ItemsControl.Background>
                 <DrawingBrush 
                     TileMode="Tile" 

@@ -48,20 +48,28 @@
                 Command="{Binding StopGameCommand}"
                 Classes="button" />
         </StackPanel>
-        <TreeView
-            HorizontalAlignment="Stretch"
-            ItemsSource="{Binding PatternPresets}"
-            SelectionMode="Single"
-            SelectedItem="{Binding SelectedPattern}"
-            SelectionChanged="TreeView_OnSelectionChanged">
-            <TreeView.ItemTemplate>
-                <TreeDataTemplate
-                    ItemsSource="{Binding SubNodes}">
-                    <TextBlock
-                        Text="{Binding Title}" />
-                </TreeDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
+        <StackPanel>
+            <TreeView
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding PatternPresets}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedPattern}"
+                SelectionChanged="TreeView_OnSelectionChanged">
+                <TreeView.ItemTemplate>
+                    <TreeDataTemplate
+                        ItemsSource="{Binding SubNodes}">
+                        <TextBlock
+                            Text="{Binding Title}" />
+                    </TreeDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <Button
+                DockPanel.Dock="Bottom"
+                Content="Place pattern"
+                Command="{Binding PlacePatternCommand}"
+                Classes="button" />
+        </StackPanel>
+       
     </DockPanel>
 
 </UserControl>
