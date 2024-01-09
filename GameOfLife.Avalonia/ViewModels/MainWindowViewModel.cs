@@ -301,6 +301,11 @@ public class MainWindowViewModel : ViewModelBase
                             new(nameof(SamplePatterns.Spaceships.MiddleweightSpaceship), SamplePatterns.Spaceships.MiddleweightSpaceship),
                             new(nameof(SamplePatterns.Spaceships.HeavyweightSpaceship), SamplePatterns.Spaceships.HeavyweightSpaceship)
                         }),
+                    new("Methuselah",
+                        new ObservableCollection<PatternNode>
+                        {
+                            new(nameof(SamplePatterns.Methuselah.RPentomino), SamplePatterns.Methuselah.RPentomino)
+                        }),
                 })
         };
     }
