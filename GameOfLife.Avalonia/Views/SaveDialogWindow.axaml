@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:GameOfLife.Avalonia.ViewModels"
+        mc:Ignorable="d"
+        x:Class="GameOfLife.Avalonia.Views.SaveDialogWindow"
+        Title="Save Pattern"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight">
+    <Design.DataContext>
+        <viewModels:SaveDialogViewModel />
+    </Design.DataContext>
+    <Window.Styles>
+        <Style Selector="Button.button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+    </Window.Styles>
+    <StackPanel Margin="30" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock 
+                Margin="10"
+                Text="Pattern-Name:"
+                VerticalAlignment="Center" />
+            <TextBox 
+                Width="200"
+                Text="{Binding FileName}"
+                     VerticalAlignment="Center" />
+        </StackPanel>
+        
+        <Button 
+            Content="Save" 
+            Margin="10"
+            Command="{Binding SaveCommand}"
+            Classes="button"/>
+    </StackPanel>
+</Window>

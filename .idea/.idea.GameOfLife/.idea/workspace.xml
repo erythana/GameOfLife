@@ -8,7 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/AppInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternPersistence.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/SaveableCells.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/SaveDialogViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SaveDialogWindow.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SaveDialogWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,11 +40,15 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2d5477ee2c9a13212ad5b8aacd2641a35f4e9f1f061be20e3293244fb7266a4/Point.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b845e1ab72687a184ca3650a037fab73bcbce5035e31e3ff860df2494a2/ReactiveCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4ea6e1e014844945f95328fe189dc13548cd6511aa2d628c312a4b0bda1d1/Rect.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5098771c4515b115fc5e694d8e79c3523cebd8fda4a73efa7dfa672215a1c9/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57a1f82f884de2785cf31f799c2f1a6b36437f82afdb52feb11e5e580572c/Math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5a32e3a596b01ca8834bdc24c6744dd7ac8762bc902fa1ebe4e6f3225ce4183/TileBrush.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6780d13016c376c4491c5618b257d84da7eacf747ed2719783e775546b79b/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/896f8bb260c18e493e44b41c9fcd93b55de41ae2dd1b93a2a7a78b4d9ddf9cb/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/91385f46579de0b4502a829430ec3ce8f1ac79434f1fab7c5d1933b84c77414/RectangleGeometry.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9eedaf6ff7615849708be8bf87394de4af2f359deaf4e3a9398582e82ea1980/QueryLanguage.Creation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a86e1612711dc640abd3acd49217d406d4e1fec4c82edc89f3a4d38d68cd0/RxApp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b430e084ab33d5b318f28876dedabb8aa879f7f7b6e60df3a5da1dd196ecda2/Window.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b48178b0dbc4487010e647267312f441ef63a824d42089848113ae893e72fc90/ObservableCollection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdb498c0d14105b7dd52bec27cd1982ff3539e0c7f8b6d01495ec996fbb639/IScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c4995a828fb940486cea5bfffa748189757b89a03d7e798241a3a7c0fb3187eb/ReactiveCommandBase.cs" root0="SKIP_HIGHLIGHTING" />
@@ -43,19 +59,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffc196dcaa72b99bef7ac446415884fe13cbff486fc89fe87d78638ac873/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/GameControl.axaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/GameControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/ModelBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -134,6 +144,12 @@
       <workItem from="1704739824774" duration="9041000" />
       <workItem from="1704748937265" duration="4535000" />
       <workItem from="1704818504203" duration="5158000" />
+      <workItem from="1704832387998" duration="219000" />
+      <workItem from="1704907559921" duration="865000" />
+      <workItem from="1704916064694" duration="2567000" />
+      <workItem from="1704919243784" duration="866000" />
+      <workItem from="1704969110653" duration="4220000" />
+      <workItem from="1705236244109" duration="1036000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -207,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704823612766</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Methuselah sample pattern">
+      <option name="closed" value="true" />
+      <created>1704832598956</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704832598956</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +258,8 @@
     <MESSAGE value="New RPentomino pattern because it's fancy" />
     <MESSAGE value="Implemented &quot;Drawing Mode&quot; for paused/stopped state" />
     <MESSAGE value="Implemented Mouse-Placement of preset patterns" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Mouse-Placement of preset patterns" />
+    <MESSAGE value="Methuselah sample pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Methuselah sample pattern" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

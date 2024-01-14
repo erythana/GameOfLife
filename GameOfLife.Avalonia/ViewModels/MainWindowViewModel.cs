@@ -5,7 +5,9 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using GameOfLife.Avalonia.Models;
+using GameOfLife.Avalonia.Views;
 using GameOfLife.Models;
 using GameOfLife.Ruleset;
 using ReactiveUI;
@@ -27,6 +29,7 @@ public class MainWindowViewModel : ViewModelBase
     private IEnumerable<Point> _currentCells;
     private PatternNode? _selectedPattern;
     private bool _isPlacementMode;
+    private PatternNode _customPatternNode;
 
     #endregion
 
@@ -36,12 +39,25 @@ public class MainWindowViewModel : ViewModelBase
     {
         _gameEngine = new GameEngine();
         _gameEngine.TickFinished += GameEngineOnTickFinished;
-        _currentCells = Enumerable.Empty<Point>();
+        CurrentCells = Enumerable.Empty<Point>();
         Cells = new ObservableCollection<CellViewModel>();
         CellSize = 20;
-        
+
         InitializeCommands();
+        InitializePatterns();
+    }
+
+    private void InitializePatterns()
+    {
         InitializePatternPresets();
+        _customPatternNode = new PatternNode(AppInfo.PresetNodeName,  new ObservableCollection<PatternNode>());
+        PatternPresets.Add(_customPatternNode);
+        
+        var persistence = new PatternPersistence();
+        var storedPatterns = persistence.LoadCellsFromFile();
+        
+        foreach (var storedPattern in storedPatterns)
+            _customPatternNode.SubNodes.Add(new PatternNode(storedPattern.PatternName, storedPattern.Pattern));
     }
 
     #endregion
@@ -52,6 +68,8 @@ public class MainWindowViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> PauseGameCommand { get; private set; }
     public ReactiveCommand<Unit, Unit> StopGameCommand { get; private set; }
     public ReactiveCommand<Unit, Unit> PlacePatternCommand { get; private set; }
+    public ReactiveCommand<Unit,Unit> ExportCellsCommand { get; private set; }
+    public ReactiveCommand<PatternNode, Unit> DeletePresetCommand { get; private set; }
 
     public int CellSize {
         get => _cellSize;
@@ -60,7 +78,7 @@ public class MainWindowViewModel : ViewModelBase
             SetField(ref _cellSize, value);
             BackgroundGridSize = new RelativeRect(0, 0, CellSize, CellSize, RelativeUnit.Absolute);
             BackgroundRectangleSize = new Rect(0, 0, CellSize, CellSize);
-            PlaceCells(_currentCells);
+            PlaceCells(CurrentCells);
         }
     }
 
@@ -91,7 +109,7 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
-    public IEnumerable<PatternNode> PatternPresets { get; private set; }
+    public List<PatternNode> PatternPresets { get; private set; }
 
     public PatternNode? SelectedPattern {
         get => _selectedPattern;
@@ -103,17 +121,22 @@ public class MainWindowViewModel : ViewModelBase
         set
         {
             _canvasSize = value;
-            PlaceCells(_currentCells);
+            PlaceCells(CurrentCells);
         }
     }
-    
+
+    private IEnumerable<Point> CurrentCells {
+        get => _currentCells;
+        set => SetField(ref _currentCells, value);
+    }
+
     #endregion
 
     #region methods
 
     private void StartGame()
     {
-        IsPlacementMode = false;
+        _isPlacementMode = false;
         _gameEngine.StartGame();
     }
 
@@ -126,11 +149,33 @@ public class MainWindowViewModel : ViewModelBase
         CurrentGeneration = 0;
     }
     
-    private void PlacePattern() => IsPlacementMode = true;
+    private void PlacePattern() => _isPlacementMode = true;
+    
+    private async void ExportCells()
+    {
+        if (Application.Current!.ApplicationLifetime is not ClassicDesktopStyleApplicationLifetime { MainWindow: { } ownerWindow })
+            return;
+        
+        var saveDialog = new SaveDialogWindow();
+        var viewModel = new SaveDialogViewModel(saveDialog);
+        saveDialog.DataContext = viewModel;
+        var fileName = await saveDialog.ShowDialog<string>(ownerWindow);
 
-    public bool IsPlacementMode {
-        get => _isPlacementMode;
-        set => SetField(ref _isPlacementMode, value);
+        if (string.IsNullOrWhiteSpace(fileName))
+            return;
+        
+        var persistance = new PatternPersistence();
+        persistance.ExportCellsToFile(new SaveableCells(fileName, CurrentCells));
+
+        var presetNode = PatternPresets.Find(x => x.Title == AppInfo.PresetNodeName);
+        presetNode?.SubNodes.Add(new PatternNode(fileName, CurrentCells));
+    }
+    
+    private void DeletePreset(PatternNode patternNode)
+    {
+        var persistence = new PatternPersistence();
+        persistence.DeleteCellsFromFile(new SaveableCells(patternNode.Title, patternNode.Pattern!));
+        _customPatternNode.SubNodes.Remove(patternNode);
     }
 
     public void OnCanvasClick(Point pointerPosition)
@@ -138,7 +183,7 @@ public class MainWindowViewModel : ViewModelBase
         if (_gameEngine.IsGameRunning && !_gameEngine.IsGamePaused)
             return;
 
-        if (IsPlacementMode)
+        if (_isPlacementMode)
         {
             var pattern = SelectedPattern!.Pattern!;
             var cellToPlace = GetCellPosition(pointerPosition);
@@ -149,7 +194,7 @@ public class MainWindowViewModel : ViewModelBase
                 return p;
             });
             
-            PlaceCells(_currentCells.Concat(modifiedPatternPosition));
+            PlaceCells(CurrentCells.Concat(modifiedPatternPosition));
         }
         else
             ToggleCellOnCanvas(pointerPosition);
@@ -159,22 +204,9 @@ public class MainWindowViewModel : ViewModelBase
     {
         var cellToPlace = GetCellPosition(pointerPosition);
 
-        PlaceCells(_currentCells.Contains(cellToPlace)
-            ? _currentCells.Where(x => !x.Equals(cellToPlace))
-            : _currentCells.Append(cellToPlace));
-    }
-
-    private Point GetCellPosition(Point pointerPosition)
-    {
-
-        var horizontalCell = pointerPosition.X / CellSize + (pointerPosition.X >= 0
-            ? 1
-            : 0);
-        var verticalCell = pointerPosition.Y / CellSize + (pointerPosition.Y >= 0
-            ? 0
-            : -1);
-        var cellToPlace = new Point(horizontalCell, verticalCell);
-        return cellToPlace;
+        PlaceCells(CurrentCells.Contains(cellToPlace)
+            ? CurrentCells.Where(x => !x.Equals(cellToPlace))
+            : CurrentCells.Append(cellToPlace));
     }
 
     private void GameEngineOnTickFinished(object? sender, TickFinishedEventArgs e)
@@ -185,7 +217,7 @@ public class MainWindowViewModel : ViewModelBase
     
     public void PlaceOverlayCells(Point pointerPosition)
     {
-        if (!IsPlacementMode || SelectedPattern?.Pattern is null)
+        if (!_isPlacementMode || SelectedPattern?.Pattern is null)
             return;
         
         var cellsToPlace = SelectedPattern.Pattern.ToList();
@@ -194,7 +226,7 @@ public class MainWindowViewModel : ViewModelBase
         var horizontalOffset = (CanvasSize.Width / 2) % CellSize;
         var verticalOffset = (CanvasSize.Height / 2) % CellSize - CellSize;
 
-        var placedCells =_currentCells.Select(p => new CellViewModel
+        var placedCells =CurrentCells.Select(p => new CellViewModel
         {
             CellSize = CellSize,
             Left = p.X * CellSize - horizontalOffset,
@@ -212,11 +244,11 @@ public class MainWindowViewModel : ViewModelBase
     
     public void DisableCellOverlay()
     {
-        IsPlacementMode = false;
+        _isPlacementMode = false;
         
         var horizontalOffset = (CanvasSize.Width / 2) % CellSize;
         var verticalOffset = (CanvasSize.Height / 2) % CellSize - CellSize;
-        Cells = new ObservableCollection<CellViewModel>(_currentCells.Select(p => new CellViewModel
+        Cells = new ObservableCollection<CellViewModel>(CurrentCells.Select(p => new CellViewModel
         {
             CellSize = CellSize,
             Left = p.X * CellSize - horizontalOffset,
@@ -231,14 +263,23 @@ public class MainWindowViewModel : ViewModelBase
 
     private void InitializeCommands()
     {
+        
+        var notRunning = this
+            .WhenAnyValue(x => x._gameEngine.IsGameRunning)
+            .ObserveOn(RxApp.MainThreadScheduler)
+            .CombineLatest(this
+                    .WhenAnyValue(x => x._gameEngine.IsGamePaused)
+                    .ObserveOn(RxApp.MainThreadScheduler),
+                (isRunning, isPaused) => !isRunning || isPaused);//directly negating is not supported
+
         StartGameCommand = ReactiveCommand.Create(StartGame,
-            canExecute: this
-                .WhenAnyValue(x => x._gameEngine.IsGameRunning)
-                .ObserveOn(RxApp.MainThreadScheduler)
-                .CombineLatest(this
-                        .WhenAnyValue(x => x._gameEngine.IsGamePaused)
-                        .ObserveOn(RxApp.MainThreadScheduler),
-                    (isRunning, isPaused) => !isRunning || isPaused), outputScheduler: RxApp.MainThreadScheduler); //directly negating is not supported
+            canExecute: notRunning, RxApp.MainThreadScheduler);
+        
+        ExportCellsCommand = ReactiveCommand.Create(ExportCells, 
+            canExecute: notRunning
+            .CombineLatest(this
+                .WhenAnyValue(x => x.CurrentCells)
+                .ObserveOn(RxApp.MainThreadScheduler), (previousCombined, currentCells) => previousCombined && currentCells.Any()), outputScheduler: RxApp.MainThreadScheduler);
         
         PauseGameCommand = ReactiveCommand.Create(PauseGame,
             canExecute: this
@@ -248,6 +289,7 @@ public class MainWindowViewModel : ViewModelBase
                         .WhenAnyValue(x => x._gameEngine.IsGamePaused)
                         .ObserveOn(RxApp.MainThreadScheduler),
                     (isRunning, isPaused) => isRunning && !isPaused), outputScheduler: RxApp.MainThreadScheduler);
+
         
         StopGameCommand = ReactiveCommand.Create(StopGame,
             canExecute: this
@@ -266,12 +308,14 @@ public class MainWindowViewModel : ViewModelBase
                     .WhenAnyValue(x => x.SelectedPattern)
                     .ObserveOn(RxApp.MainThreadScheduler), 
                     (previousCombined, patternNode) => previousCombined && patternNode is not null), outputScheduler: RxApp.MainThreadScheduler); //directly negating is not supported
+        
+        DeletePresetCommand = ReactiveCommand.Create<PatternNode>(DeletePreset);
     }
 
     private void InitializePatternPresets()
     {
-        PatternPresets = new[]
-        {
+        PatternPresets =
+        [
             new PatternNode("Sample patterns",
                 new ObservableCollection<PatternNode>
                 {
@@ -307,13 +351,26 @@ public class MainWindowViewModel : ViewModelBase
                             new(nameof(SamplePatterns.Methuselah.RPentomino), SamplePatterns.Methuselah.RPentomino)
                         }),
                 })
-        };
+        ];
+    }
+    
+    private Point GetCellPosition(Point pointerPosition)
+    {
+
+        var horizontalCell = pointerPosition.X / CellSize + (pointerPosition.X >= 0
+            ? 1
+            : 0);
+        var verticalCell = pointerPosition.Y / CellSize + (pointerPosition.Y >= 0
+            ? 0
+            : -1);
+        var cellToPlace = new Point(horizontalCell, verticalCell);
+        return cellToPlace;
     }
     
     private void PlaceCells(IEnumerable<Point> cells)
     {
         var cellsToPlace = cells.ToList();
-        _currentCells = cellsToPlace;
+        CurrentCells = cellsToPlace;
         
         var horizontalOffset = (CanvasSize.Width / 2) % CellSize;
         var verticalOffset = (CanvasSize.Height / 2) % CellSize - CellSize;

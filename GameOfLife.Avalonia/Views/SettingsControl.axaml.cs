@@ -12,7 +12,7 @@ public partial class SettingsControl : UserControl
 
     private void TreeView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
-        if (sender is not TreeView treeView || e.AddedItems.Count <= 1 && e.AddedItems[0] is PatternNode { IsLeaf: true })
+        if (sender is not TreeView treeView || e.AddedItems.Count != 1 || e.AddedItems[0] is PatternNode { IsLeaf: true })
             return;
         
         treeView.UnselectAll();

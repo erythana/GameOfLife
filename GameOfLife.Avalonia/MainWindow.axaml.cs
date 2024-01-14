@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Input;
+using GameOfLife.Avalonia.Models;
 using GameOfLife.Avalonia.ViewModels;
 
 namespace GameOfLife.Avalonia;
@@ -10,6 +11,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = new MainWindowViewModel();
+        Title = AppInfo.ApplicationName;
     }
 
     private void InputElement_OnKeyDown(object? sender, KeyEventArgs e)
