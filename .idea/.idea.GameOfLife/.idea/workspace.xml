@@ -8,19 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11aa044-4ece-4d9e-a86a-bfbf675c759b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/AppInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternPersistence.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/SaveableCells.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/SaveDialogViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SaveDialogWindow.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SaveDialogWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOfLife/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Models/PatternNode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOfLife/Extensions/PointEnumerableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameOfLife/Extensions/PointEnumerableExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,14 +49,20 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffc196dcaa72b99bef7ac446415884fe13cbff486fc89fe87d78638ac873/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Models/PatternNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/GameControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/chris/Programming/GameOfLife/GameOfLife.Avalonia/Views/SettingsControl.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/GameEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameOfLife/Ruleset/ModelBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -149,7 +145,9 @@
       <workItem from="1704916064694" duration="2567000" />
       <workItem from="1704919243784" duration="866000" />
       <workItem from="1704969110653" duration="4220000" />
-      <workItem from="1705236244109" duration="1036000" />
+      <workItem from="1705236244109" duration="1497000" />
+      <workItem from="1705606767754" duration="802000" />
+      <workItem from="1705608132355" duration="1810000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -231,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704832598956</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implemented simple (file)persistance for patterns">
+      <option name="closed" value="true" />
+      <created>1705237684806</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705237684806</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +265,8 @@
     <MESSAGE value="Implemented &quot;Drawing Mode&quot; for paused/stopped state" />
     <MESSAGE value="Implemented Mouse-Placement of preset patterns" />
     <MESSAGE value="Methuselah sample pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Methuselah sample pattern" />
+    <MESSAGE value="Implemented simple (file)persistance for patterns" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented simple (file)persistance for patterns" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

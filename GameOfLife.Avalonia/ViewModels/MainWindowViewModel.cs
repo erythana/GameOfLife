@@ -30,6 +30,7 @@ public class MainWindowViewModel : ViewModelBase
     private PatternNode? _selectedPattern;
     private bool _isPlacementMode;
     private PatternNode _customPatternNode;
+    private Point? _lastKnownCellPosition;
 
     #endregion
 
@@ -217,31 +218,36 @@ public class MainWindowViewModel : ViewModelBase
     
     public void PlaceOverlayCells(Point pointerPosition)
     {
-        if (!_isPlacementMode || SelectedPattern?.Pattern is null)
+        var mouseCellPosition = GetCellPosition(pointerPosition);
+        if (!_isPlacementMode || SelectedPattern?.Pattern is null || _lastKnownCellPosition == mouseCellPosition)
             return;
+
+        _lastKnownCellPosition = mouseCellPosition;
         
         var cellsToPlace = SelectedPattern.Pattern.ToList();
-        var mouseCellPosition = GetCellPosition(pointerPosition);
         
-        var horizontalOffset = (CanvasSize.Width / 2) % CellSize;
-        var verticalOffset = (CanvasSize.Height / 2) % CellSize - CellSize;
+        var furthestTopLeft = GetMostTopLeftFrom(cellsToPlace);
+        var cellOffset = new Point(mouseCellPosition.X - furthestTopLeft.X, mouseCellPosition.Y - furthestTopLeft.Y);
+        
+        var horizontalOffsetPixel = CanvasSize.Width / 2 % CellSize;
+        var verticalOffsetPixel = CanvasSize.Height / 2 % CellSize - CellSize;
 
-        var placedCells =CurrentCells.Select(p => new CellViewModel
+        var placedCells = CurrentCells.Select(p => new CellViewModel
         {
             CellSize = CellSize,
-            Left = p.X * CellSize - horizontalOffset,
-            Top = p.Y * CellSize + verticalOffset
+            Left = p.X * CellSize - horizontalOffsetPixel,
+            Top = p.Y * CellSize + verticalOffsetPixel
         });
         
         Cells = new ObservableCollection<CellViewModel>(placedCells.Concat(cellsToPlace.Select(p => new CellViewModel
         {
             CellSize = CellSize,
-            Left = (p.X + mouseCellPosition.X) * CellSize - horizontalOffset,
-            Top = (p.Y + mouseCellPosition.Y) * CellSize + verticalOffset 
+            Left = (p.X + cellOffset.X) * CellSize - horizontalOffsetPixel,
+            Top = (p.Y + cellOffset.Y) * CellSize + verticalOffsetPixel 
         })));
         OnPropertyChanged(nameof(Cells));
     }
-    
+
     public void DisableCellOverlay()
     {
         _isPlacementMode = false;
@@ -365,6 +371,20 @@ public class MainWindowViewModel : ViewModelBase
             : -1);
         var cellToPlace = new Point(horizontalCell, verticalCell);
         return cellToPlace;
+    }
+    
+    private static Point GetMostTopLeftFrom(IEnumerable<Point> cellsToPlace)
+    {
+        var furthestPoint = new Point(int.MaxValue, int.MaxValue);
+        foreach (var point in cellsToPlace)
+        {
+            if (point.X < furthestPoint.X)
+                furthestPoint = point;
+            else if (point.X == furthestPoint.X && point.Y > furthestPoint.Y)
+                furthestPoint = point;
+        }
+
+        return furthestPoint;
     }
     
     private void PlaceCells(IEnumerable<Point> cells)

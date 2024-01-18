@@ -6,12 +6,12 @@ namespace GameOfLife.Extensions;
 
 public static class PointEnumerableExtensions
 {
-    public static IEnumerable<Point> Offset(this IEnumerable<Point> lifeForm, int xOffset, int yOffset)
+    public static IEnumerable<Point> Offset(this IEnumerable<Point> lifeForm, Point offset)
     {
         return lifeForm.Select(p =>
         {
-            p.Y += yOffset;
-            p.X += xOffset;
+            p.Y += offset.Y;
+            p.X += offset.X;
             return p;
         });
     }
